@@ -3,32 +3,20 @@ package onlineshop;
 public class Consumible extends Producto{
     
  
-   private String modelo;
    private int calorias;
    private String ingredientes;
    private String vencimiento;
-   private double precio;
-   private double cantidad;
-   private String nombre;
+   private Boolean isBebida;
+   private Boolean isAlcohol; 
    
-   public Consumible(String n, double c, double p, String m, int ca, String i, String v){
+   public Consumible(String n, double c, double p, int ca, String i, String v, Boolean ib, Boolean ih){
        super(n,p,c);
-       this.modelo = m;
-       this.nombre = n;
-       this.precio = p;
-       this.cantidad = c;
+       this.isBebida = ib;
+       this.isAlcohol = ih;
        this.calorias = ca;
        this.ingredientes = i;
        this.vencimiento = v;
    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
 
     public int getCalorias() {
         return calorias;
@@ -64,23 +52,12 @@ public class Consumible extends Producto{
 
     @Override
     public String toString() {
-        return "Consumible{" + "modelo=" + modelo + ", calorias=" + calorias + ", ingredientes=" + ingredientes + ", vencimiento=" + vencimiento + ", precio=" + precio + ", cantidad=" + cantidad + ", nombre=" + nombre + '}';
+        return "Consumible{" + "calorias=" + calorias + ", ingredientes=" + ingredientes + ", vencimiento=" + vencimiento + ", precio=" + super.precio + ", cantidad=" + super.cantidad + ", nombre=" + super.nombre + ", es bebida=" + isBebida + ", tiene alcohol=" + isAlcohol + '}';
     }
-
     
 
     @Override
     public double getPrecio() {
-        if(modelo.equalsIgnoreCase("Oxford")){
-            precio += precio*15/100;
-        }
-        else if(modelo.equalsIgnoreCase("Skinny")){
-            precio += precio*25/100;
-        }
-        else if(modelo.equalsIgnoreCase("Recto")){
-            precio -= precio*15/100;
-        }
-        
         return precio;
     }
 }
